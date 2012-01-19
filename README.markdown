@@ -9,6 +9,8 @@ An Example of using both .dust and .js files together in a bundle
     }
 </code></pre>
 
+
+
 ###Required Settings for DUST###
 <ul>
 <li><b>url</b>: The location of the .dust file</li>
@@ -21,6 +23,7 @@ See the <a href="http://www.grails.org/plugin/resources">Resources plugin</a> fo
 
 ##Issues##
 <ul>
+    <li>The plugin uses a modified version of the <a href="https://github.com/zlegein/dustjs-plugin/blob/master/src/java/dust-full-0.3.0-modified.js">dust-full-0.3.0.js</a> for compilation. The <b>window</b> object in the script is out of scope and has been replaced with <b>this</b> instead. This plugin will need to be updated when new versions of <a href="http://akdubya.github.com/dustjs/">dustjs</a> are released.</li>
     <li>Must specify the default bundle manually as this is calculated based on file extension by default.</li>
     <li>When debug is switched on there is currently no way to fall back to the standard DUST javascript support. The dust files will be rendered unprocessed</li>
 </ul>
