@@ -15,7 +15,8 @@ class DustjsEngineService {
         try {
             String data = input.text.replaceAll("\n", "")
             data = data.replaceAll("'", '\'')
-            def filename = input.name.replaceAll(/.dust/, '')
+            def filename = "${input.parentFile.name}_${input.name.replaceAll(/.dust/, '')}"
+            log.debug "Compiling dust file under name: ${filename}"
             String script = dustjs.text + "var compiled = dust.compile('${data}', '${filename}');"
             // run the javascript
             engine.eval(script);
