@@ -1,4 +1,4 @@
-<plugin name='dustjs' version='0.1' grailsVersion='2.0 &gt; *'>
+<plugin name='dustjs' version='0.2' grailsVersion='2.0 &gt; *'>
   <author>Zach Legein &amp; Zach Lendon</author>
   <title>Dustjs  Plugin</title>
   <description>\
@@ -22,8 +22,8 @@ This plugin supports server-side compilation of .dust template files to their .j
   </repositories>
   <dependencies>
     <test>
-      <dependency group='org.codehaus.geb' name='geb-spock' version='0.6.2' />
       <dependency group='org.seleniumhq.selenium' name='selenium-firefox-driver' version='2.5.0' />
+      <dependency group='org.codehaus.geb' name='geb-spock' version='0.6.2' />
     </test>
   </dependencies>
   <plugins />
