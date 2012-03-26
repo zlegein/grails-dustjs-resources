@@ -23,10 +23,11 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
+        grailsRepo "http://grails.org/plugins"
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-
+        test "org.codehaus.geb:geb-spock:0.6.2"
         test("org.seleniumhq.selenium:selenium-firefox-driver:2.5.0") {
             exclude 'selenium-server'
             export = false
