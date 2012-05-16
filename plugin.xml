@@ -3,7 +3,7 @@
   <authorEmail>zlegein@gmail.com</authorEmail>
   <title>DustJs  Resource Plugin</title>
   <description>This plugins supports server-side compilation of .dust template files to their .js counterparts.</description>
-  <documentation>http://grails.org/plugin/grails-dustjs-resource</documentation>
+  <documentation>http://github.com/zlegein/grails-dustjs-resources</documentation>
   <type>DustjsResourcesGrailsPlugin</type>
   <resources>
     <resource>DustjsResourceMapper</resource>
@@ -26,8 +26,6 @@
       <plugin group='org.grails.plugins' name='resources' version='1.1.6' />
     </runtime>
   </plugins>
-  <runtimePluginRequirements>
-    <plugin name='resources' version='1.1.6 &gt; *' />
-  </runtimePluginRequirements>
+  <runtimePluginRequirements />
   <behavior />
 </plugin>

@@ -4,7 +4,7 @@ This plugin is designed to optimize the use of <a href="https://github.com/linke
 ##Usage##
 An Example of using both .dust and .js files together in a bundle
 <pre><code>'dust' {
-        resource url:'js/dust-core-0.3.0.js'
+        resource url:'js/dust-core-0.4.0.js'
         resource url: 'dust/test.dust', attrs: [rel: "javascript/dust", type: 'js'], bundle: 'bundle_dust'        
     }
 </code></pre>

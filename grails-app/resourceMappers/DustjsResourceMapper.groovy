@@ -1,7 +1,7 @@
 /**
  * @author Zach Legein
  */
-import org.grails.plugins.resource.mapper.MapperPhase
+import org.grails.plugin.resource.mapper.MapperPhase
 import org.codehaus.groovy.grails.plugins.support.aware.GrailsApplicationAware
 import org.codehaus.groovy.grails.commons.GrailsApplication
 
