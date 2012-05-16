@@ -4,6 +4,8 @@
 //
 // Copyright (c) 2010, Aleksander Williams
 // Released under the MIT License.
+
+//NOTE: The <b>window</b> object in the script is out of scope and has been replaced with <b>this</b> instead
 //
 
 var dust = {};
