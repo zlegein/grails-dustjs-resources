@@ -10,15 +10,15 @@ import org.springframework.core.io.ClassPathResource
  */
 class DustJsEngineTest extends grails.test.GrailsUnitTestCase {
 
-    def dustJsEngine
+    def dustjsEngine
 
     void setUp(){
-        dustJsEngine = new DustJsEngine()
+        dustjsEngine = new DustjsEngine()
     }
 
     void testCompile(){
         File input = (new ClassPathResource('org/grails/plugins/dustjs/example.dust', getClass().classLoader)).file
-        String output = dustJsEngine.compile(input)
+        String output = dustjsEngine.compile(input)
         assert output.contains('This is a test') : "Output $output"
 
     }

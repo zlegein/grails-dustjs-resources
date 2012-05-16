@@ -5,7 +5,7 @@ import org.grails.plugins.resource.mapper.MapperPhase
 import org.codehaus.groovy.grails.plugins.support.aware.GrailsApplicationAware
 import org.codehaus.groovy.grails.commons.GrailsApplication
 
-import org.grails.plugins.dustjs.DustJsEngine
+import org.grails.plugins.dustjs.DustjsEngine
 
 class DustjsResourceMapper implements GrailsApplicationAware {
 
@@ -20,7 +20,7 @@ class DustjsResourceMapper implements GrailsApplicationAware {
         File target
 
         if (resource.sourceUrl && originalFile.name.toLowerCase().endsWith('.dust')) {
-            DustJsEngine engine = new DustJsEngine()
+            DustjsEngine engine = new DustjsEngine()
             File input = grailsApplication.parentContext.getResource(resource.sourceUrl).file
             target = new File(originalFile.absolutePath.replaceAll(/(?i)\.dust/, '.js'))
 

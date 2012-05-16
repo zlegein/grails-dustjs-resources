@@ -4,12 +4,12 @@ import org.mozilla.javascript.Context
 import org.mozilla.javascript.Scriptable
 import org.springframework.core.io.ClassPathResource
 
-class DustJsEngine {
+class DustjsEngine {
 
     def Scriptable globalScope
     def ClassLoader classLoader
 
-    def DustJsEngine(){
+    def DustjsEngine(){
         try {
             classLoader = getClass().getClassLoader()
 
