@@ -31,7 +31,7 @@ class DustjsEngine {
         }
     }
 
-    def compile(File input) {
+    def compile(File input, String srcRootDir) {
         try {
             def cx = Context.enter()
             def compileScope = cx.newObject(globalScope)
@@ -43,9 +43,20 @@ class DustjsEngine {
             def result = cx.evaluateString(compileScope, "dust.compile(dustJsSrc, dustJsSrcName)", "DustJs compile command", 0, null)
             return result
         } catch (Exception e) {
-            throw new Exception("CoffeeScript Engine compilation of coffeescript to javascript failed.", e)
+            throw new Exception("DustJs Engine compilation of dustjs to javascript failed.", e)
         } finally {
             Context.exit()
+        }
+    }
+
+    def getFileName(File input, String root) {
+        def folders = input.path.split('/')
+        def start = folders.findIndexOf {it == root}
+        def remainder = folders[start + 1..folders.length - 1].findAll{it != input.name}
+        if(remainder.size() > 1) {
+            return "${remainder.join('_')}_${input.name.replaceAll(/.dust/, '')}"
+        }  else {
+            return input.name.replaceAll(/.dust/, '')
         }
     }
 }

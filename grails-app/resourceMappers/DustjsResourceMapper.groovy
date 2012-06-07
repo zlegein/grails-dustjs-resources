@@ -27,8 +27,9 @@ class DustjsResourceMapper implements GrailsApplicationAware {
             if (log.debugEnabled) {
                 log.debug "Compiling DUST file [${originalFile}] into [${target}]"
             }
+
             try {
-                String output = engine.compile(input)
+                String output = engine.compile(input, grailsApplication.config.dustjs.srcRootDir)
                 target.write(output)
                 // Update mapping entry
                 // We need to reference the new js file from now on
