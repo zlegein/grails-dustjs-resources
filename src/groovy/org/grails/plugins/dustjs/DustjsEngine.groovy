@@ -27,17 +27,19 @@ class DustjsEngine {
         } finally {
             try {
                 Context.exit()
-            } catch (java.lang.IllegalStateException ise) {}
+            } catch (java.lang.IllegalStateException ise) {
+                log.error ise
+            }
         }
     }
 
-    def compile(File input, String srcRootDir) {
+    def compile(File input, String rootDir) {
         try {
+            String filename = getFileName(input, rootDir)
             def cx = Context.enter()
             def compileScope = cx.newObject(globalScope)
             compileScope.setParentScope(globalScope)
             compileScope.put("dustJsSrc", compileScope, input.text)
-            def filename = "${input.parentFile.name}_${input.name.replaceAll(/.dust/, '')}"
             compileScope.put("dustJsSrcName", compileScope, filename)
             log.debug "Compiling dust file under name: ${filename}"
             def result = cx.evaluateString(compileScope, "dust.compile(dustJsSrc, dustJsSrcName)", "DustJs compile command", 0, null)
@@ -45,15 +47,22 @@ class DustjsEngine {
         } catch (Exception e) {
             throw new Exception("DustJs Engine compilation of dustjs to javascript failed.", e)
         } finally {
-            Context.exit()
+            try {
+                Context.exit()
+            } catch (java.lang.IllegalStateException ise) {
+                log.error ise
+            }
         }
     }
 
-    def getFileName(File input, String root) {
-        def folders = input.path.split('/')
-        def start = folders.findIndexOf {it == root}
-        def remainder = folders[start + 1..folders.length - 1].findAll{it != input.name}
-        if(remainder.size() > 1) {
+    def getFileName(File input, String rootDir) {
+        List<String> folders = input.path.split('/')
+        if(!folders.contains(rootDir)) {
+            throw new IllegalArgumentException("Unable to locate root directory ${rootDir} in file path ${input.absolutePath}")
+        }
+        def start = folders.findIndexOf {it == rootDir} + 1
+        def remainder = folders[start..folders.size() - 1].findAll{ it != input.name}
+        if(!remainder.empty) {
             return "${remainder.join('_')}_${input.name.replaceAll(/.dust/, '')}"
         }  else {
             return input.name.replaceAll(/.dust/, '')

@@ -45,4 +45,6 @@ class DustjsResourceMapper implements GrailsApplicationAware {
             }
         }
     }
+
+
 }
