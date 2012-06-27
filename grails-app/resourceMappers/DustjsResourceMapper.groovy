@@ -38,7 +38,6 @@ class DustjsResourceMapper implements GrailsApplicationAware {
                 resource.sourceUrlExtension = 'js'
                 resource.actualUrl = resource.originalUrl.replaceAll(/(?i)\.dust/, '.js')
                 resource.contentType = 'text/javascript'
-                resource.tagAttributes.rel = 'javascript'
             } catch (Exception e) {
                 log.error("error compiling dust file: ${originalFile}", e)
                 e.printStackTrace()
