@@ -13,9 +13,16 @@ modules = {
 </code></pre>
 
 
-
 ###Required Settings for DUST###
 <ul>
+<li>
+Developers will need to set the root dust template directory configuration in their application Config.groovy
+<pre><code>
+dustjs {
+    srcRootDir = 'dust'
+}
+</code></pre>
+</li>
 <li><b>url</b>: The location of the .dust file relative to the web-app folder</li>
 </ul>
 

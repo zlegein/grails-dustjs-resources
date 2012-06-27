@@ -3,7 +3,7 @@ import org.grails.plugin.resource.ResourceProcessor
 
 class DustjsResourcesGrailsPlugin {
     // the plugin version
-    def version = "0.2"
+    def version = "0.3"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.3.7 > *"
     def dependsOn = [:]

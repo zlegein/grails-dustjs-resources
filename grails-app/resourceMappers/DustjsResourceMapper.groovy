@@ -6,6 +6,7 @@ import org.codehaus.groovy.grails.plugins.support.aware.GrailsApplicationAware
 import org.codehaus.groovy.grails.commons.GrailsApplication
 
 import org.grails.plugins.dustjs.DustjsEngine
+import org.codehaus.groovy.grails.exceptions.GrailsConfigurationException
 
 class DustjsResourceMapper implements GrailsApplicationAware {
 
@@ -29,6 +30,9 @@ class DustjsResourceMapper implements GrailsApplicationAware {
             }
 
             try {
+                if(!grailsApplication.config.dustjs.srcRootDir) {
+                    throw new GrailsConfigurationException("Dust templates src root directory configuration is not set")
+                }
                 String output = engine.compile(input, grailsApplication.config.dustjs.srcRootDir)
                 target.write(output)
                 // Update mapping entry
