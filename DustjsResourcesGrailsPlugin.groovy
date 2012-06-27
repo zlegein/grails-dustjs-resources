@@ -34,7 +34,7 @@ class DustjsResourcesGrailsPlugin {
     def doWithSpring = { ->
         ResourceTagLib.SUPPORTED_TYPES['dust'] = [type:'text/javascript', writer:'js']
         ResourceProcessor.DEFAULT_MODULE_SETTINGS['dust'] = [
-                disposition: 'defer'
+          disposition: 'defer'
         ]
     }
 
