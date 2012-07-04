@@ -29,7 +29,7 @@ grails.project.dependency.resolution = {
         runtime 'org.mozilla:rhino:1.7R3'
     }
     plugins {
-        build ":release:2.0.0", {
+        build ":release:2.0.3", {
             export = false
         }
         test ':geb:0.7.0'

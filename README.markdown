@@ -7,7 +7,7 @@ An Example of including a a dust template in your Resources definition file
 modules = {
   dust {
     dependsOn 'dustjs'
-    resource url: 'dust/test.dust'        
+    resource url: 'dust/test.dust'
   }
 }
 </code></pre>
@@ -15,15 +15,16 @@ modules = {
 
 ###Required Settings for DUST###
 <ul>
+<li><b>url</b>: The location of the .dust file relative to the web-app folder</li>
 <li>
-Developers will need to set the root dust template directory configuration in their application Config.groovy
+Developers will need to set the root dust template directory relative to the web-app folder.
 <pre><code>
 dustjs {
     srcRootDir = 'dust'
 }
 </code></pre>
 </li>
-<li><b>url</b>: The location of the .dust file relative to the web-app folder</li>
+
 </ul>
 
 See the <a href="http://www.grails.org/plugin/resources">Resources plugin</a> for more details on available configurations
