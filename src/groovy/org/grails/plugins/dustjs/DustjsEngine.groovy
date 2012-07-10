@@ -13,7 +13,7 @@ class DustjsEngine {
         try {
             classLoader = getClass().getClassLoader()
 
-            def dustJsResource = (new ClassPathResource('org/grails/plugins/dustjs/dust-full-0.4.0-modified.js', getClass().classLoader))
+            def dustJsResource = (new ClassPathResource('org/grails/plugins/dustjs/dust-full-1.0.0.js', getClass().classLoader))
             assert dustJsResource.exists() : "DustJs resource not found"
 
             def dustJsStream = dustJsResource.inputStream
