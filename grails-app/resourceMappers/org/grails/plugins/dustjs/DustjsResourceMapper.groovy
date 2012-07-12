@@ -32,9 +32,6 @@ class DustjsResourceMapper implements GrailsApplicationAware {
             }
 
             try {
-                if(!config.dustjs.srcRootDir) {
-                    throw new GrailsConfigurationException("Dust templates src root directory configuration is not set")
-                }
                 engine.compile(input, target, templateName)
                 // We need to reference the new js file from now on
                 resource.processedFile = target
