@@ -2,25 +2,21 @@
 This plugin is designed to optimize the use of <a href="https://github.com/linkedin/dustjs">.dust</a> js files. The processing will compile specified .dust files into their .js counterparts, and place the javascript into the processing chain to be available to the other resource plugin features. The plugin uses the <a href="http://www.grails.org/plugin/resources">Resources plugin</a> and plays nicely with both the zipped and cached resources plugins. It will also include the core of the dust library which is required to render dust templates on the client.
 
 ## Installation
-    In the BuildConfig.groovy file, add the following plugin reference:
-    <pre><code>
-        plugins {
-            runtime: 'dustjs-resources:0.3'
-        }
-    </code></pre>
+
+    plugins {
+        runtime: 'dustjs-resources:0.3'
+    }
 
 ## Usage
 
 ### Declaring Resources
 
-    <pre><code>
     modules = {
       dust {
         dependsOn 'dustjs'
-        resource url: 'dust/test.dust'
+        resource url: 'dust/example.dust'
       }
     }
-    </code></pre>
 
 #### Settings
 
@@ -58,5 +54,5 @@ All configuration variables should be relative to:
 
 
 ##Special Thanks##
-To Paul Fairless for the <a href="https://github.com/paulfairless/grails-lesscss-resources">grails-lesscss-resources</a> plugin for showing me how to pull this off
-To Matt Sheehan for the <a href="https://github.com/sheehan/grails-handlebars-resources">grails-handlebars-resources</a> plugin for greatly improving this plugin
+* To Paul Fairless for the <a href="https://github.com/paulfairless/grails-lesscss-resources">grails-lesscss-resources</a> plugin for showing me how to pull this off
+* To Matt Sheehan for the <a href="https://github.com/sheehan/grails-handlebars-resources">grails-handlebars-resources</a> plugin for greatly improving this plugin
