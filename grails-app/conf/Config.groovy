@@ -23,7 +23,3 @@ log4j = {
     warn   'org.mortbay.log'
 }
 
-
-dustjs {
-    srcRootDir = 'dust'
-}

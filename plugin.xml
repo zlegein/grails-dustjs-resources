@@ -7,7 +7,7 @@
   <type>DustjsResourcesGrailsPlugin</type>
   <resources>
     <resource>DustJsResources</resource>
-    <resource>DustjsResourceMapper</resource>
+    <resource>org.grails.plugins.dustjs.DustjsResourceMapper</resource>
   </resources>
   <repositories>
     <repository name='grailsCentral' url='http://plugins.grails.org' />

@@ -33,17 +33,16 @@ class DustjsEngine {
         }
     }
 
-    def compile(File input, String rootDir) {
+    def compile(File input, File target, String templateName) {
         try {
-            String filename = getFileName(input, rootDir)
             def cx = Context.enter()
             def compileScope = cx.newObject(globalScope)
             compileScope.setParentScope(globalScope)
-            compileScope.put("dustJsSrc", compileScope, input.text)
-            compileScope.put("dustJsSrcName", compileScope, filename)
-            log.debug "Compiling dust file under name: ${filename}"
-            def result = cx.evaluateString(compileScope, "dust.compile(dustJsSrc, dustJsSrcName)", "DustJs compile command", 0, null)
-            return result
+            compileScope.put("templateInput", compileScope, input.text)
+            compileScope.put("templateName", compileScope, templateName)
+            log.debug "Compiling dust file under name: ${templateName}"
+            String output = cx.evaluateString(compileScope, "dust.compile(templateInput, templateName)", "DustJs compile command", 0, null)
+            target.write(output)
         } catch (Exception e) {
             throw new Exception("DustJs Engine compilation of dustjs to javascript failed.", e)
         } finally {
@@ -52,20 +51,6 @@ class DustjsEngine {
             } catch (java.lang.IllegalStateException ise) {
                 log.error ise
             }
-        }
-    }
-
-    def getFileName(File input, String rootDir) {
-        List<String> folders = input.path.split('/')
-        if(!folders.contains(rootDir)) {
-            throw new IllegalArgumentException("Unable to locate root directory ${rootDir} in file path ${input.absolutePath}")
-        }
-        def start = folders.findIndexOf {it == rootDir} + 1
-        def remainder = folders[start..folders.size() - 1].findAll{ it != input.name}
-        if(!remainder.empty) {
-            return "${remainder.join('_')}_${input.name.replaceAll(/.dust/, '')}"
-        }  else {
-            return input.name.replaceAll(/.dust/, '')
         }
     }
 }
