@@ -33,9 +33,9 @@ Note that the `.dust` extension is removed.
 The default path separator is `/`. If you want to change it, you can specify a value for `templatesPathSeparator` in the configuration. For example,
 adding
 
-    grails.resources.mappers.dustjs.templatesPathSeparator = '.'
+    grails.resources.mappers.dustjs.templatesPathSeparator = '_'
 
-will change the template name to `templates.foo`.
+will change the template name to `templates_foo`.
 
 If you specify a value for `templatesRoot` in the configuration, then that value will be stripped from the template name. For example, adding
 
