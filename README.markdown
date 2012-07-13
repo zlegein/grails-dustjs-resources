@@ -12,9 +12,9 @@ This plugin is designed to optimize the use of <a href="https://github.com/linke
 ### Declaring Resources
 
     modules = {
-      dust {
+      profile {
         dependsOn 'dustjs'
-        resource url: 'dust/example.dust'
+        resource url: 'dust/profile/guest.dust', attrs: [rel: "javascript/dust", type: 'js'], bundle: 'bundle_profile'
       }
     }
 
@@ -22,6 +22,7 @@ This plugin is designed to optimize the use of <a href="https://github.com/linke
 
 *   **dependsOn**: `dustjs`.
 *   **url**: location of the dust template file.
+*   **attrs[rel]**: should be set to `javascript/dust` for compatibility reasons.
 *   **attrs[type]**: must be `js`.
 *   **bundle**: must be set as will not default correctly. To add to default bundle use `bundle_<module name>`.
 
