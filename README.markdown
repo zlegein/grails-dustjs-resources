@@ -4,7 +4,7 @@ This plugin is designed to optimize the use of <a href="https://github.com/linke
 ## Installation
 
     plugins {
-        runtime: 'dustjs-resources:0.3'
+        runtime: 'dustjs-resources:0.8'
     }
 
 ## Usage

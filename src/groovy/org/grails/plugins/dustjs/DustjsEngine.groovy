@@ -33,16 +33,16 @@ class DustjsEngine {
         }
     }
 
-    def compile(File input, File target, String templateName) {
+    def compile(File input, String templateName) {
         try {
             def cx = Context.enter()
             def compileScope = cx.newObject(globalScope)
             compileScope.setParentScope(globalScope)
-            compileScope.put("templateInput", compileScope, input.text)
-            compileScope.put("templateName", compileScope, templateName)
+            compileScope.put("dustJsSrc", compileScope, input.text)
+            compileScope.put("dustJsSrcName", compileScope, templateName)
             log.debug "Compiling dust file under name: ${templateName}"
-            String output = cx.evaluateString(compileScope, "dust.compile(templateInput, templateName)", "DustJs compile command", 0, null)
-            target.write(output)
+            def result = cx.evaluateString(compileScope, "dust.compile(dustJsSrc, dustJsSrcName)", "DustJs compile command", 0, null)
+            return result
         } catch (Exception e) {
             throw new Exception("DustJs Engine compilation of dustjs to javascript failed.", e)
         } finally {

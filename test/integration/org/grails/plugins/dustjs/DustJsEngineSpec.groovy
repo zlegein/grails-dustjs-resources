@@ -10,24 +10,11 @@ class DustJsEngineSpec extends IntegrationSpec {
     void "compile"() {
         given:
         File input = (new ClassPathResource('org/grails/plugins/dustjs/example.dust', getClass().classLoader)).file
-        File target = new File(input.absolutePath.replaceAll(/(?i)\.dust/, '.js'))
-        when:
-        !target.exists()
-        def dustjsEngine = new DustjsEngine()
-        dustjsEngine.compile(input, target, "doesn't matter for this test")
-        then:
-        target.text.contains("This is a test")
-    }
-
-    @Unroll("testing compile failure")
-    void "compile failure"() {
-        given:
-        File input = (new ClassPathResource('org/grails/plugins/dustjs/example.dust', getClass().classLoader)).file
         when:
         def dustjsEngine = new DustjsEngine()
-        dustjsEngine.compile(input, null, "whatever")
+        String output = dustjsEngine.compile(input, "test-template-name")
         then:
-        thrown Exception
+        output.contains("This is a test")
+        output.contains("dust.register(\"test-template-name\",body_0);")
     }
 }
-

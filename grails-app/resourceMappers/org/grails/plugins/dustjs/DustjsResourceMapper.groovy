@@ -14,17 +14,17 @@ class DustjsResourceMapper implements GrailsApplicationAware {
 
     GrailsApplication grailsApplication
 
-    def phase = MapperPhase.GENERATION
+    def phase = MapperPhase.GENERATION // need to run early so that we don't miss out on all the good stuff
 
-    static defaultIncludes = ['**/*.dust']
+    static defaultExcludes = ['**/*.css','**/*.png','**/*.gif','**/*.jpg','**/*.jpeg','**/*.gz','**/*.zip']
 
     def map(resource, config){
         File originalFile = resource.processedFile
-        File input = getOriginalFileSystemFile(resource.sourceUrl)
-        String templateName = calculateTemplateName(resource, config)
 
-        if (resource.sourceUrl) {
+        if (resource.sourceUrl && originalFile.name.toLowerCase().endsWith('.dust')) {
             DustjsEngine engine = new DustjsEngine()
+            File input = grailsApplication.parentContext.getResource(resource.sourceUrl).file
+            String templateName = calculateTemplateName(resource, config)
             File target = new File(originalFile.absolutePath.replaceAll(/(?i)\.dust/, '.js'))
 
             if (log.debugEnabled) {
@@ -32,12 +32,16 @@ class DustjsResourceMapper implements GrailsApplicationAware {
             }
 
             try {
-                engine.compile(input, target, templateName)
+
+                String output = engine.compile(input, templateName)
+                target.write(output)
+                // Update mapping entry
                 // We need to reference the new js file from now on
                 resource.processedFile = target
+                // Not sure if i really need these
                 resource.sourceUrlExtension = 'js'
+                resource.actualUrl = resource.originalUrl.replaceAll(/(?i)\.dust/, '.js')
                 resource.contentType = 'text/javascript'
-                resource.updateActualUrlFromProcessedFile()
             } catch (Exception e) {
                 log.error("error compiling dust file: ${originalFile}", e)
                 e.printStackTrace()
@@ -69,9 +73,6 @@ class DustjsResourceMapper implements GrailsApplicationAware {
         config[key] instanceof String ? config[key] : defaultVal
     }
 
-    private File getOriginalFileSystemFile(String sourcePath) {
-        grailsApplication.parentContext.getResource(sourcePath).file
-    }
 
 
 }
