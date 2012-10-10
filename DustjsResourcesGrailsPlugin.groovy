@@ -3,10 +3,10 @@ import org.grails.plugin.resource.ResourceProcessor
 
 class DustjsResourcesGrailsPlugin {
     // the plugin version
-    def version = "0.9.1"
+    def version = "0.9.2"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.3.7 > *"
-    def dependsOn = [:]
+    def dependsOn = [resources: "* > 1.2-RC1"]
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
             "grails-app/views/error.gsp"

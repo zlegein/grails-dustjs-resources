@@ -35,7 +35,7 @@ grails.project.dependency.resolution = {
         test ':geb:0.7.0'
         test ':spock:0.6'
 
-        runtime(":resources:1.2.RC2")
+        runtime ":resources:1.2.RC2"
     }
 
 }

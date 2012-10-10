@@ -6,6 +6,7 @@ modules = {
 
     dustjs111 {
         resource url: [plugin: 'dustjs-resources', dir:'js', file:'dust-core-1.1.1.js']
+        resource url: [plugin: 'dustjs-resources', dir:'js', file:'dust-helpers-1.1.0.js']
     }
 
     dustjs {
