@@ -3,17 +3,17 @@ This plugin is designed to optimize the use of <a href="https://github.com/linke
 
 ## Installation
 
+Add the plugin to your `BuildConfig.groovy` file.
+
     plugins {
         runtime: 'dustjs-resources:0.9.2'
     }
-
-    Note: version 0.9.1
 
 ## Usage
 
 ### Declaring Resources
 
-    Users can explicitly define which version of dust they would like to use. The default is the latest version (dust-core-1.1.1)
+Users can explicitly define which version of dust they would like to use. The default is the latest version (dust-core-1.1.1)
 
     modules = {
         profile {
@@ -22,7 +22,7 @@ This plugin is designed to optimize the use of <a href="https://github.com/linke
         }
     }
 
-    To explicitly define a particular version of the plugin use the following format:
+To explicitly define a particular version of the plugin use the following format:
 
      modules = {
           profile {
