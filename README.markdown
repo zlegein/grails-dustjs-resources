@@ -6,14 +6,14 @@ This plugin is designed to optimize the use of <a href="https://github.com/linke
 Add the plugin to your `BuildConfig.groovy` file.
 
     plugins {
-        runtime: 'dustjs-resources:0.9.2'
+        runtime: 'dustjs-resources:0.9.3'
     }
 
 ## Usage
 
 ### Declaring Resources
 
-Users can explicitly define which version of dust they would like to use. The default is the latest version (dust-core-1.1.1)
+Users can explicitly define which version of dust they would like to use. The default is the latest version (uses `dust-core-2.1.0` and `dust-helpers-1.1.1`)
 
     modules = {
         profile {
@@ -26,14 +26,14 @@ To explicitly define a particular version of the plugin use the following format
 
      modules = {
           profile {
-            dependsOn 'dustjs100'
+            dependsOn 'dustjs111'
             resource url: 'dust/profile/guest.dust', attrs: [rel: "javascript/dust", type: 'js'], bundle: 'bundle_profile'
           }
      }
 
 #### Settings
 
-*   **dependsOn**: `dustjs` or a particular version `dustjs100`.
+*   **dependsOn**: `dustjs` or a particular version `dustjs111`.
 *   **url**: location of the dust template file.
 *   **attrs[rel]**: should be set to `javascript/dust` for compatibility reasons.
 *   **attrs[type]**: must be `js`.
@@ -85,3 +85,8 @@ All configuration variables should be relative to:
 ### v0.9.2
 
 *   Corrected the 0.9.1 issue. Provided backwards compatibility to allow users to explicitly define which version of `dustjs` they would like to use
+
+### v0.9.3
+
+*   Added latest `dust-core-2.1.0` and `dust-helpers-1.1.1`
+*   Use latest Resources plugin with version `1.2.1`
